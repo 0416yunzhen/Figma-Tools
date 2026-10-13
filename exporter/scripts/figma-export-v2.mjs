@@ -479,10 +479,27 @@ async function main() {
   const browser = await chromium.launch({ headless: true, executablePath: EDGE });
   if (!componentsOnly) {
     const { frames, report } = await captureScreens(browser);
-    await fs.writeFile(path.join(OUT_WORK, 'screens-raw.json'), JSON.stringify(frames));
-    await fs.writeFile(path.join(OUT_WORK, 'screens-report.json'), JSON.stringify(report, null, 2));
-    await fs.writeFile(path.join(OUT_WORK, 'hovers-screens.json'), JSON.stringify(HOVERS));
-    await fs.writeFile(path.join(OUT_WORK, 'clicks-screens.json'), JSON.stringify(CLICKS));
+    // 只重擷取部分路由（--only）時，把結果合併回既有資料，其餘畫面保持不變
+    const loadJson = async (name, fallback) => { try { return JSON.parse(await fs.readFile(path.join(OUT_WORK, name), 'utf8')); } catch { return fallback; } };
+    let outFrames = frames, outReport = report, outHovers = HOVERS, outClicks = CLICKS;
+    if (only) {
+      const old = await loadJson('screens-raw.json', []);
+      const names = new Set(frames.map((f) => f.matrix.frameName));
+      const order = buildRouteMatrix(sizeKey).map((m) => m.frameName);
+      outFrames = [...old.filter((f) => !names.has(f.matrix.frameName)), ...frames].sort((a, b) => order.indexOf(a.matrix.frameName) - order.indexOf(b.matrix.frameName));
+      const oldReport = await loadJson('screens-report.json', []);
+      outReport = [...oldReport.filter((r) => !names.has(r.frameName)), ...report].sort((a, b) => order.indexOf(a.frameName) - order.indexOf(b.frameName));
+      const bySig = (a, b) => { const seen = new Set(a.map((x) => x.sig)); return [...a, ...b.filter((x) => !seen.has(x.sig))]; };
+      outHovers = bySig(await loadJson('hovers-screens.json', []), HOVERS);
+      const oldClicks = await loadJson('clicks-screens.json', []);
+      const clickKey = (c) => JSON.stringify(c.def?.children?.length) + c.label;
+      const seenClicks = new Set(oldClicks.map(clickKey));
+      outClicks = [...oldClicks, ...CLICKS.filter((c) => !seenClicks.has(clickKey(c)))];
+    }
+    await fs.writeFile(path.join(OUT_WORK, 'screens-raw.json'), JSON.stringify(outFrames));
+    await fs.writeFile(path.join(OUT_WORK, 'screens-report.json'), JSON.stringify(outReport, null, 2));
+    await fs.writeFile(path.join(OUT_WORK, 'hovers-screens.json'), JSON.stringify(outHovers));
+    await fs.writeFile(path.join(OUT_WORK, 'clicks-screens.json'), JSON.stringify(outClicks));
     HOVERS.length = 0;
     CLICKS.length = 0;
   }

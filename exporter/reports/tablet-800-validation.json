@@ -1,6 +1,6 @@
 {
   "size": "tablet",
-  "generatedAt": "2026-10-13T06:56:11.708Z",
+  "generatedAt": "2026-10-13T07:24:12.161Z",
   "checks": {
     "routes_vs_frames": {
       "ok": true,
@@ -179,8 +179,8 @@
     "Header 以 Instance 呈現；0 個畫面因 React 該頁 Header 與共用版尺寸不同而內嵌擷取：無"
   ],
   "textTotals": {
-    "domTextNodes": 2299,
-    "jsonTextNodes": 2173
+    "domTextNodes": 1990,
+    "jsonTextNodes": 1864
   },
   "componentCounts": {
     "hoverSets": 0,
@@ -193,12 +193,12 @@
     "Survey Prompt / Overlay / Tablet": 1
   },
   "reactionCounts": {
-    "total": 1049,
-    "navigate": 730,
+    "total": 946,
+    "navigate": 627,
     "changeTo": 317,
     "overlay": 1,
     "close": 1,
-    "buttonFramesWithReaction": 1036,
+    "buttonFramesWithReaction": 933,
     "timers": 7,
     "hover": 0
   },
@@ -209,9 +209,9 @@
   },
   "summary": {
     "frames": 78,
-    "frameNodes": 6356,
+    "frameNodes": 5326,
     "components": 10,
-    "reactions": 1049,
+    "reactions": 946,
     "inlineRegions": 0,
     "heights": [
       {
@@ -246,8 +246,8 @@
       },
       {
         "frame": "Mall / List / Tablet",
-        "react": 10210,
-        "figma": 10210,
+        "react": 1058,
+        "figma": 1058,
         "diff": 0
       },
       {

@@ -1,6 +1,6 @@
 {
   "size": "desktop",
-  "generatedAt": "2026-10-13T06:25:49.536Z",
+  "generatedAt": "2026-10-13T07:24:12.007Z",
   "checks": {
     "routes_vs_frames": {
       "ok": true,
@@ -73,7 +73,7 @@
     "component_variant_counts": {
       "ok": true,
       "detail": {
-        "hoverSets": 235,
+        "hoverSets": 132,
         "Header / Desktop": 6,
         "Footer / Desktop": 1,
         "Banner / Desktop": 6,
@@ -164,8 +164,8 @@
     "hover_components": {
       "ok": true,
       "detail": {
-        "sets": 235,
-        "instances": 676,
+        "sets": 132,
+        "instances": 573,
         "failures": []
       }
     },
@@ -179,11 +179,11 @@
     "Header 以 Instance 呈現；0 個畫面因 React 該頁 Header 與共用版尺寸不同而內嵌擷取：無"
   ],
   "textTotals": {
-    "domTextNodes": 2271,
-    "jsonTextNodes": 2148
+    "domTextNodes": 1962,
+    "jsonTextNodes": 1839
   },
   "componentCounts": {
-    "hoverSets": 235,
+    "hoverSets": 132,
     "Header / Desktop": 6,
     "Footer / Desktop": 1,
     "Banner / Desktop": 6,
@@ -193,25 +193,25 @@
     "Survey Prompt / Overlay / Desktop": 1
   },
   "reactionCounts": {
-    "total": 1265,
-    "navigate": 711,
-    "changeTo": 552,
+    "total": 1059,
+    "navigate": 608,
+    "changeTo": 449,
     "overlay": 1,
     "close": 1,
-    "buttonFramesWithReaction": 1017,
+    "buttonFramesWithReaction": 914,
     "timers": 7,
-    "hover": 235
+    "hover": 132
   },
   "inlineHeaderFrames": [],
   "hover": {
-    "sets": 235,
-    "instances": 676
+    "sets": 132,
+    "instances": 573
   },
   "summary": {
     "frames": 73,
-    "frameNodes": 4693,
-    "components": 245,
-    "reactions": 1265,
+    "frameNodes": 4590,
+    "components": 142,
+    "reactions": 1059,
     "inlineRegions": 0,
     "heights": [
       {
@@ -246,8 +246,8 @@
       },
       {
         "frame": "Mall / List / Desktop",
-        "react": 8510,
-        "figma": 8510,
+        "react": 970,
+        "figma": 970,
         "diff": 0
       },
       {

@@ -23,7 +23,8 @@ const ROUTES = [
   ['/activities/earn/20260930162155769992', 'Activity / Earn Detail', false, ''],
   ['/activities/redeem', 'Activity / Redeem List', false, ''],
   ['/activities/redeem/20231030135614798035', 'Activity / Redeem Detail', false, ''],
-  ['/mall', 'Mall / List', false, ''],
+  // 兌點商城共 111 張卡片，只保留前兩排做示意（否則畫面超長、匯入很久）。
+  ['/mall', 'Mall / List', false, '', { trim: { selector: 'main a[href^="/mall/"]', rows: 2 } }],
   ['/mall/mall-001', 'Mall / Detail', true, ''],
   ['/merchants', 'Merchant / List', false, ''],
   ['/merchants/20180906171900807756', 'Merchant / Detail', false, ''],
@@ -102,6 +103,19 @@ const ROUTES = [
 ];
 
 /** 擷取前的額外操作（例如點選分頁），Export、驗證、預覽都用同一份，確保畫面一致。 */
+/** 只保留列表的前 N 排（以 display:none 隱藏其餘卡片，不動 React 原始碼；Export、驗證、預覽都套用同一份）。 */
+export async function applyTrim(page, m) {
+  if (!m.trim) return;
+  await page.evaluate(({ selector, rows }) => {
+    const cards = [...document.querySelectorAll(selector)].filter((e) => e.getBoundingClientRect().width > 1);
+    if (!cards.length) return;
+    const firstTop = Math.round(cards[0].getBoundingClientRect().top);
+    const perRow = cards.filter((e) => Math.round(e.getBoundingClientRect().top) === firstTop).length || 1;
+    cards.slice(rows * perRow).forEach((e) => e.style.setProperty('display', 'none', 'important'));
+  }, m.trim);
+  await page.waitForTimeout(300);
+}
+
 export async function applyAfter(page, m) {
   for (const step of m.after || []) {
     // click：按鈕文字包含；exact：按鈕文字完全相符（頁碼 1–5）
@@ -116,6 +130,7 @@ export async function applyAfter(page, m) {
     await locator.first().click({ timeout: 8000 });
     await page.waitForTimeout(500);
   }
+  await applyTrim(page, m);
 }
 
 export function buildRouteMatrix(size) {
@@ -124,6 +139,7 @@ export function buildRouteMatrix(size) {
     route,
     primary: extra.primary !== false,
     after: extra.after || null,
+    trim: extra.trim || null,
     authVariant: !!extra.authVariant,
     frameName: `${base} / ${s.label}`,
     size: s.key,
