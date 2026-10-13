@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>UUPON Figma Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 16px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      resize: vertical;
+    }
+
+    #exportOutput {
+      height: 180px;
+    }
+
+    #importInput {
+      height: 260px;
+    }
+
+    button {
+      padding: 9px 14px;
+      margin-right: 8px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    #status {
+      margin-top: 10px;
+      padding: 8px;
+      background: #f3f3f3;
+      white-space: pre-wrap;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>UUPON Figma Tool</h2>
+
+  <div class="section">
+    <strong>Figma → JSON</strong><br />
+    <button id="exportBtn">匯出目前選取內容</button>
+    <button id="inventoryBtn">盤點整份 Figma</button>
+    <button id="copyBtn">複製 JSON</button>
+    <button id="saveBtn">另存 JSON 檔</button>
+    <textarea id="exportOutput" placeholder="匯出結果會顯示在這裡"></textarea>
+  </div>
+
+  <div class="section">
+    <strong>匯入 JSON → Figma（自動判斷類型）</strong><br />
+    <input id="importFiles" type="file" accept=".json,application/json" multiple />
+    <button id="importBtn">匯入所選檔案</button>
+    <label style="display:block;font-size:12px;margin-top:6px;">
+      <input id="replaceMode" type="checkbox" /> 其他 JSON（非 Desktop／Tablet／Mobile 格式）：替換同名畫面／元件
+    </label>
+    <div style="font-size:12px;color:#666;margin-top:6px;line-height:1.6;">
+      會依檔案內容自動判斷：<br />
+      · Prototype（<code>prototype/*.json</code>）→ 套用到目前 Page 的畫面與元件<br />
+      · Desktop／Tablet／Mobile 共用元件 → 建立元件（含 Hover 元件）<br />
+      · Desktop／Tablet／Mobile 畫面 → 建立畫面並放入元件 Instance<br />
+      · 其他 JSON（一般 Figma 節點格式）→ 直接建立；勾選上方選項則替換同名節點<br />
+      建議順序（每個尺寸在各自的 Page）：元件 → 畫面 → Prototype → 驗證。可一次選多個檔案，會自動依此順序處理。
+    </div>
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer;font-size:12px;">進階：貼上 JSON 文字</summary>
+      <textarea id="importInput" placeholder="貼上 JSON（同樣會自動判斷類型）"></textarea>
+      <button id="importTextBtn">匯入貼上的文字</button>
+    </details>
+    <button id="fixChatBtn">將 Chat／Header 設為固定位置（目前 Page）</button>
+    <button id="validateBtn">驗證目前 Page（匯出報告）</button>
+    <div style="font-size:12px;color:#666;margin-top:6px;">
+      驗證會依目前 Page 內的 Desktop／Mobile 畫面自動判斷尺寸，結果可用上方「另存 JSON 檔」下載。
+    </div>
+  </div>
+
+  <button id="closeBtn">關閉</button>
+
+  <div id="status">狀態：UI 已載入</div>
+
+  <script>
+    const status = document.getElementById("status");
+    const exportOutput = document.getElementById("exportOutput");
+    const importInput = document.getElementById("importInput");
+    let lastExportJson = "";
+    let lastExportKind = "selection";
+
+    function exportFilename() {
+      const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+      if (lastExportKind === "validation") return `figma-validation-${stamp}.json`;
+      return lastExportKind === "inventory"
+        ? `uupon-figma-inventory-${stamp}.json`
+        : `uupon-figma-selection-${stamp}.json`;
+    }
+
+    async function saveJsonFile() {
+      const json = lastExportJson || exportOutput.value;
+      if (!json || !json.trim()) {
+        alert("請先執行匯出或盤點");
+        return;
+      }
+
+      const filename = exportFilename();
+      try {
+        if (typeof window.showSaveFilePicker === "function") {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: filename,
+            types: [{
+              description: "JSON 檔案",
+              accept: { "application/json": [".json"] }
+            }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(json);
+          await writable.close();
+        } else {
+          const blob = new Blob([json], { type: "application/json;charset=utf-8" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        }
+        setStatus("JSON 已另存：" + filename);
+      } catch (e) {
+        if (e && e.name === "AbortError") {
+          setStatus("已取消另存 JSON");
+          return;
+        }
+        setStatus("另存失敗：" + String(e));
+        alert("另存 JSON 失敗：\n" + String(e));
+      }
+    }
+
+    function setStatus(text) {
+      status.textContent = "狀態：" + text;
+    }
+
+    document.getElementById("exportBtn").addEventListener("click", function () {
+      setStatus("已按下匯出按鈕");
+
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: "export-selection"
+          }
+        },
+        "*"
+      );
+    });
+
+    document.getElementById("inventoryBtn").addEventListener("click", function () {
+      setStatus("開始盤點整份 Figma，請稍候...");
+
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: "export-inventory"
+          }
+        },
+        "*"
+      );
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", async function () {
+      try {
+        const json = lastExportJson || exportOutput.value;
+        if (!json || !json.trim()) {
+          alert("請先執行匯出或盤點");
+          return;
+        }
+        await navigator.clipboard.writeText(json);
+        setStatus("JSON 已複製");
+      } catch (e) {
+        setStatus("複製失敗：" + String(e));
+      }
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", saveJsonFile);
+
+    // ---- 匯入：依內容自動判斷類型 ----
+    // 順序：元件 → 畫面 → Prototype，確保 Instance 找得到主元件、Reaction 找得到目標。
+    function classifyJson(parsed) {
+      if (parsed && !Array.isArray(parsed) && Array.isArray(parsed.reactions)) return "prototype";
+      const items = Array.isArray(parsed) ? parsed : [parsed];
+      const named = items.filter(function (it) { return it && typeof it.name === "string"; });
+      const isV2Name = function (n) { return / \/ (Desktop|Tablet|Mobile)$/.test(n); };
+      // Desktop／Mobile 檔案：至少有一個名稱以「/ Desktop」「/ Tablet」或「/ Mobile」結尾（元件檔另含 Hover 元件，名稱不一定有尺寸）
+      const v2 = named.filter(function (it) { return isV2Name(it.name); });
+      if (v2.length > 0) {
+        const hasComponent = items.some(function (it) {
+          return it.type === "COMPONENT_SET" || it.type === "COMPONENT" || (it.pluginData && it.pluginData.fxOverlay);
+        });
+        return hasComponent ? "v2-components" : "v2-screens";
+      }
+      return "generic";
+    }
+
+    async function importParsed(entries) {
+      const order = { "v2-components": 0, "v2-screens": 1, "generic": 2, "prototype": 3 };
+      entries.sort(function (x, y) { return order[x.kind] - order[y.kind]; });
+      const summary = entries.map(function (e) { return e.label + "（" + e.kind + "）"; }).join("、");
+      setStatus("開始匯入：" + summary);
+      // 同類型的多個檔案合併成一次匯入；Plugin 一次處理一種類型，依序送出。
+      const kinds = ["v2-components", "v2-screens", "generic", "prototype"];
+      for (const kind of kinds) {
+        const group = entries.filter(function (e) { return e.kind === kind; });
+        if (group.length === 0) continue;
+        if (kind === "prototype") {
+          for (const e of group) {
+            parent.postMessage({ pluginMessage: { type: "import-prototype", json: e.text } }, "*");
+            await new Promise(function (r) { setTimeout(r, 500); });
+          }
+          continue;
+        }
+        const items = [];
+        for (const e of group) {
+          const parsed = JSON.parse(e.text);
+          if (Array.isArray(parsed)) items.push.apply(items, parsed);
+          else items.push(parsed);
+        }
+        const json = JSON.stringify(items);
+        const replace = document.getElementById("replaceMode").checked;
+        const type = kind === "v2-components" ? "import-v2-components"
+          : kind === "v2-screens" ? "import-v2-screens"
+          : replace ? "replace-json" : "import-json";
+        parent.postMessage({ pluginMessage: { type: type, json: json } }, "*");
+        // 等 Plugin 回報完成再送下一批（status 訊息以「完成」或「匯入完成」開頭）
+        await waitForImportDone();
+      }
+    }
+
+    let importWaiter = null;
+    function waitForImportDone() {
+      return new Promise(function (resolve) {
+        importWaiter = resolve;
+        setTimeout(function () { if (importWaiter === resolve) { importWaiter = null; resolve(); } }, 15 * 60 * 1000);
+      });
+    }
+
+    document.getElementById("importBtn").addEventListener("click", async function () {
+      const input = document.getElementById("importFiles");
+      const files = input.files ? Array.from(input.files) : [];
+      if (files.length === 0) {
+        alert("請先選擇 JSON 檔案");
+        return;
+      }
+      try {
+        const entries = [];
+        for (const file of files) {
+          const text = await file.text();
+          entries.push({ label: file.name, text: text, kind: classifyJson(JSON.parse(text)) });
+        }
+        await importParsed(entries);
+      } catch (e) {
+        setStatus("匯入失敗：" + String(e));
+      }
+    });
+
+    document.getElementById("importTextBtn").addEventListener("click", async function () {
+      const text = importInput.value.trim();
+      if (!text) {
+        alert("請先貼上 JSON");
+        return;
+      }
+      try {
+        await importParsed([{ label: "貼上的文字", text: text, kind: classifyJson(JSON.parse(text)) }]);
+      } catch (e) {
+        setStatus("匯入失敗：" + String(e));
+      }
+    });
+
+    document.getElementById("fixChatBtn").addEventListener("click", function () {
+      parent.postMessage({ pluginMessage: { type: "fix-chat" } }, "*");
+    });
+
+    document.getElementById("validateBtn").addEventListener("click", function () {
+      setStatus("驗證中...");
+      parent.postMessage({ pluginMessage: { type: "validate-v2", size: "auto" } }, "*");
+    });
+
+    document.getElementById("closeBtn").addEventListener("click", function () {
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: "close"
+          }
+        },
+        "*"
+      );
+    });
+
+    window.onmessage = function (event) {
+      const msg = event.data.pluginMessage;
+
+      if (!msg) return;
+
+      if (msg.type === "export-result") {
+        lastExportJson = msg.json;
+        lastExportKind = "selection";
+        exportOutput.value = msg.json;
+        setStatus("匯出完成");
+      }
+
+      if (msg.type === "inventory-result") {
+        lastExportJson = msg.json;
+        lastExportKind = "inventory";
+        const sizeMb = (new Blob([msg.json]).size / 1024 / 1024).toFixed(2);
+        exportOutput.value = `整份 Figma 盤點完成（${sizeMb} MB）。\n完整 JSON 已保存在 Plugin 記憶體，請按「另存 JSON 檔」。`;
+        setStatus("整份 Figma 盤點完成，可直接另存 JSON 檔");
+      }
+
+      if (msg.type === "v2-report") {
+        lastExportJson = msg.json;
+        lastExportKind = "validation";
+        exportOutput.value = msg.json;
+        setStatus("驗證完成，可按「另存 JSON 檔」取得報告");
+      }
+
+      if (msg.type === "status") {
+        setStatus(msg.message);
+        if (importWaiter && /(匯入完成|^完成)/.test(msg.message)) {
+          const done = importWaiter;
+          importWaiter = null;
+          done();
+        }
+      }
+
+      if (msg.type === "error") {
+        if (importWaiter) {
+          const done = importWaiter;
+          importWaiter = null;
+          done();
+        }
+        setStatus("錯誤：" + msg.message);
+        alert("Plugin 錯誤：\n" + msg.message);
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# 相依套件
+node_modules/
+
+# 可重新產生的輸出（匯出腳本產生；需要時重新執行 export / build）
+exporter/figma/screens/
+exporter/figma/components/
+exporter/figma/prototype/
+exporter/reports/work/
+
+# 系統與編輯器
+.DS_Store
+Thumbs.db
+.vscode/*
+.idea/
+*.log

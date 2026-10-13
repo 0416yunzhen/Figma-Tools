@@ -1,0 +1,8 @@
+# Node
+*.log
+*.log.*
+node_modules
+
+out/
+dist/
+# code.js（編譯後）要進 Git：Figma 載入的是它，沒有它 Plugin 就不能在新環境直接使用

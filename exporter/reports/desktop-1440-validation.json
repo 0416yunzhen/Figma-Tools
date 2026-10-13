@@ -1,0 +1,659 @@
+{
+  "size": "desktop",
+  "generatedAt": "2026-10-13T06:25:49.536Z",
+  "checks": {
+    "routes_vs_frames": {
+      "ok": true,
+      "detail": {
+        "routes": 73,
+        "frames": 73,
+        "missing": []
+      }
+    },
+    "unique_names": {
+      "ok": true,
+      "detail": []
+    },
+    "naming_convention": {
+      "ok": true,
+      "detail": []
+    },
+    "frame_width": {
+      "ok": true,
+      "detail": []
+    },
+    "frame_height_equals_scrollHeight": {
+      "ok": true,
+      "detail": []
+    },
+    "no_wrong_login_or_notfound_capture": {
+      "ok": true,
+      "detail": []
+    },
+    "no_not_found_text": {
+      "ok": true,
+      "detail": []
+    },
+    "guest_loggedin_correct": {
+      "ok": true,
+      "detail": []
+    },
+    "header_auth_matches_frame": {
+      "ok": true,
+      "detail": []
+    },
+    "no_missing_text": {
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "samples": []
+      }
+    },
+    "no_extra_text": {
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "samples": []
+      }
+    },
+    "no_text_truncation": {
+      "ok": true,
+      "detail": {
+        "exactly500chars": [],
+        "lineClampTexts": 90
+      }
+    },
+    "control_counts_match_dom": {
+      "ok": true,
+      "detail": {
+        "frames": 0,
+        "samples": []
+      }
+    },
+    "component_variant_counts": {
+      "ok": true,
+      "detail": {
+        "hoverSets": 235,
+        "Header / Desktop": 6,
+        "Footer / Desktop": 1,
+        "Banner / Desktop": 6,
+        "Chat / Desktop": 2,
+        "FAQ Accordion / Desktop": 14,
+        "Survey FAQ Accordion / Desktop": 16,
+        "Survey Prompt / Overlay / Desktop": 1
+      }
+    },
+    "header_variants_named": {
+      "ok": true,
+      "detail": [
+        "Auth=Guest, Menu=Closed",
+        "Auth=Guest, Menu=Earn",
+        "Auth=Guest, Menu=Redeem",
+        "Auth=LoggedIn, Menu=Closed",
+        "Auth=LoggedIn, Menu=Earn",
+        "Auth=LoggedIn, Menu=Redeem"
+      ]
+    },
+    "prototype_sources_exist": {
+      "ok": true,
+      "detail": 0
+    },
+    "prototype_destinations_exist": {
+      "ok": true,
+      "detail": 0
+    },
+    "cross_page_navigate_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "reaction_sources_are_button_frames": {
+      "ok": true,
+      "detail": 0
+    },
+    "duplicate_reactions_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "self_navigate_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "prototype_hotspot_layers_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "text_image_icon_reactions_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "navigate_reset_flags": {
+      "ok": true,
+      "detail": 0
+    },
+    "header_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "footer_rules": {
+      "ok": true,
+      "detail": {
+        "links": 11,
+        "reactions": 11
+      }
+    },
+    "banner_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "chat_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "accordion_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "overlay_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "frames_have_explicit_fills": {
+      "ok": true,
+      "detail": 0
+    },
+    "hover_components": {
+      "ok": true,
+      "detail": {
+        "sets": 235,
+        "instances": 676,
+        "failures": []
+      }
+    },
+    "react_modified_files_zero": {
+      "ok": true,
+      "detail": "(empty)"
+    }
+  },
+  "failures": [],
+  "notes": [
+    "Header 以 Instance 呈現；0 個畫面因 React 該頁 Header 與共用版尺寸不同而內嵌擷取：無"
+  ],
+  "textTotals": {
+    "domTextNodes": 2271,
+    "jsonTextNodes": 2148
+  },
+  "componentCounts": {
+    "hoverSets": 235,
+    "Header / Desktop": 6,
+    "Footer / Desktop": 1,
+    "Banner / Desktop": 6,
+    "Chat / Desktop": 2,
+    "FAQ Accordion / Desktop": 14,
+    "Survey FAQ Accordion / Desktop": 16,
+    "Survey Prompt / Overlay / Desktop": 1
+  },
+  "reactionCounts": {
+    "total": 1265,
+    "navigate": 711,
+    "changeTo": 552,
+    "overlay": 1,
+    "close": 1,
+    "buttonFramesWithReaction": 1017,
+    "timers": 7,
+    "hover": 235
+  },
+  "inlineHeaderFrames": [],
+  "hover": {
+    "sets": 235,
+    "instances": 676
+  },
+  "summary": {
+    "frames": 73,
+    "frameNodes": 4693,
+    "components": 245,
+    "reactions": 1265,
+    "inlineRegions": 0,
+    "heights": [
+      {
+        "frame": "Home / Desktop",
+        "react": 1644,
+        "figma": 1644,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn List / Desktop",
+        "react": 965,
+        "figma": 965,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn Detail / Desktop",
+        "react": 1597,
+        "figma": 1597,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem List / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem Detail / Desktop",
+        "react": 2504,
+        "figma": 2504,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / List / Desktop",
+        "react": 8510,
+        "figma": 8510,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail / Desktop",
+        "react": 901,
+        "figma": 901,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / Detail / Desktop",
+        "react": 1391,
+        "figma": 1391,
+        "diff": 0
+      },
+      {
+        "frame": "News / List / Desktop",
+        "react": 1065,
+        "figma": 1065,
+        "diff": 0
+      },
+      {
+        "frame": "News / Detail / Desktop",
+        "react": 2125,
+        "figma": 2125,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Login / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register / Desktop",
+        "react": 1179,
+        "figma": 1179,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Forgot Password / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Center / Desktop",
+        "react": 1052,
+        "figma": 1052,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Profile Edit / Desktop",
+        "react": 1861,
+        "figma": 1861,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Change Password / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Member / EasyCard Management / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Point Ledger / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Verify / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Point Exchange / Home / Desktop",
+        "react": 1392,
+        "figma": 1392,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 01 / Desktop",
+        "react": 1216,
+        "figma": 1216,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 02 / Desktop",
+        "react": 967,
+        "figma": 967,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 03 / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 04 / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 01 / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 02 / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 03 / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 04 / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Survey / List / Desktop",
+        "react": 2554,
+        "figma": 2554,
+        "diff": 0
+      },
+      {
+        "frame": "Industry Survey / Desktop",
+        "react": 1935,
+        "figma": 1935,
+        "diff": 0
+      },
+      {
+        "frame": "App Download / Desktop",
+        "react": 4328,
+        "figma": 4328,
+        "diff": 0
+      },
+      {
+        "frame": "About UUPON / Desktop",
+        "react": 1538,
+        "figma": 1538,
+        "diff": 0
+      },
+      {
+        "frame": "Partnership / Desktop",
+        "react": 1094,
+        "figma": 1094,
+        "diff": 0
+      },
+      {
+        "frame": "Cautions / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "FAQ / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Contact / Desktop",
+        "react": 1314,
+        "figma": 1314,
+        "diff": 0
+      },
+      {
+        "frame": "Newsletter / Desktop",
+        "react": 1370,
+        "figma": 1370,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant Rules / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Legal / Member / Desktop",
+        "react": 3262,
+        "figma": 3262,
+        "diff": 0
+      },
+      {
+        "frame": "Legal / Privacy / Desktop",
+        "react": 2254,
+        "figma": 2254,
+        "diff": 0
+      },
+      {
+        "frame": "Legal / Jointly / Desktop",
+        "react": 1230,
+        "figma": 1230,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn List (Main) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn List (Tutorial) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem List (Main) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem List (Tutorial) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 2) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 3) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 4) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 5) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 2) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 3) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 4) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 5) / Desktop",
+        "react": 2123,
+        "figma": 2123,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (Redeem) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (Merchant) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (News) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Login (Password Shown) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register (Password Shown) / Desktop",
+        "react": 1179,
+        "figma": 1179,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register (Code Sent) / Desktop",
+        "react": 1179,
+        "figma": 1179,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register (Errors) / Desktop",
+        "react": 1251,
+        "figma": 1251,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Forgot Password (Error) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Profile Edit (Saved) / Desktop",
+        "react": 1893,
+        "figma": 1893,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Profile Edit (Alert Closed) / Desktop",
+        "react": 1717,
+        "figma": 1717,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Change Password (Saved) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Home (Promo Closed) / Desktop",
+        "react": 1644,
+        "figma": 1644,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail (Notice) / Desktop",
+        "react": 901,
+        "figma": 901,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail (Return) / Desktop",
+        "react": 901,
+        "figma": 901,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Point Ledger (Earn) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Point Ledger (Redeem) / Desktop",
+        "react": 900,
+        "figma": 900,
+        "diff": 0
+      },
+      {
+        "frame": "Point Exchange / Home (Logged In) / Desktop",
+        "react": 1392,
+        "figma": 1392,
+        "diff": 0
+      }
+    ]
+  },
+  "figmaRuntimeChecks": "尚未執行：匯入 Figma 後請在 Plugin 按「④ 驗證」取得 Figma 內實際 Text/Hotspot/跨頁 NAVIGATE/重複 Reaction 計數。",
+  "passed": true
+}

@@ -1,0 +1,21 @@
+{
+  "name": "figma-tools-exporter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "把執行中的 React 前端擷取成 Figma 可匯入的 JSON（畫面、元件、狀態、Prototype）",
+  "type": "module",
+  "scripts": {
+    "export:desktop": "node scripts/figma-export-v2.mjs --size desktop",
+    "export:tablet": "node scripts/figma-export-v2.mjs --size tablet",
+    "export:mobile": "node scripts/figma-export-v2.mjs --size mobile",
+    "build:desktop": "node scripts/build-package-v2.mjs --size desktop",
+    "build:tablet": "node scripts/build-package-v2.mjs --size tablet",
+    "build:mobile": "node scripts/build-package-v2.mjs --size mobile",
+    "validate:desktop": "node scripts/validate-package-v2.mjs --size desktop",
+    "validate:tablet": "node scripts/validate-package-v2.mjs --size tablet",
+    "validate:mobile": "node scripts/validate-package-v2.mjs --size mobile"
+  },
+  "dependencies": {
+    "playwright": "1.64.0"
+  }
+}

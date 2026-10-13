@@ -1,0 +1,685 @@
+{
+  "size": "mobile",
+  "generatedAt": "2026-10-13T06:32:19.668Z",
+  "checks": {
+    "routes_vs_frames": {
+      "ok": true,
+      "detail": {
+        "routes": 77,
+        "frames": 77,
+        "missing": []
+      }
+    },
+    "unique_names": {
+      "ok": true,
+      "detail": []
+    },
+    "naming_convention": {
+      "ok": true,
+      "detail": []
+    },
+    "frame_width": {
+      "ok": true,
+      "detail": []
+    },
+    "frame_height_equals_scrollHeight": {
+      "ok": true,
+      "detail": []
+    },
+    "no_wrong_login_or_notfound_capture": {
+      "ok": true,
+      "detail": []
+    },
+    "no_not_found_text": {
+      "ok": true,
+      "detail": []
+    },
+    "guest_loggedin_correct": {
+      "ok": true,
+      "detail": []
+    },
+    "header_auth_matches_frame": {
+      "ok": true,
+      "detail": []
+    },
+    "no_missing_text": {
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "samples": []
+      }
+    },
+    "no_extra_text": {
+      "ok": true,
+      "detail": {
+        "count": 0,
+        "samples": []
+      }
+    },
+    "no_text_truncation": {
+      "ok": true,
+      "detail": {
+        "exactly500chars": [],
+        "lineClampTexts": 99
+      }
+    },
+    "control_counts_match_dom": {
+      "ok": true,
+      "detail": {
+        "frames": 0,
+        "samples": []
+      }
+    },
+    "component_variant_counts": {
+      "ok": true,
+      "detail": {
+        "hoverSets": 0,
+        "Header / Mobile": 8,
+        "Footer / Mobile": 1,
+        "Banner / Mobile": 6,
+        "Chat / Mobile": 2,
+        "FAQ Accordion / Mobile": 14,
+        "Survey FAQ Accordion / Mobile": 16,
+        "Survey Prompt / Overlay / Mobile": 1
+      }
+    },
+    "header_variants_named": {
+      "ok": true,
+      "detail": [
+        "Auth=Guest, Menu=Closed",
+        "Auth=Guest, Menu=Open",
+        "Auth=Guest, Menu=Earn",
+        "Auth=Guest, Menu=Redeem",
+        "Auth=LoggedIn, Menu=Closed",
+        "Auth=LoggedIn, Menu=Open",
+        "Auth=LoggedIn, Menu=Earn",
+        "Auth=LoggedIn, Menu=Redeem"
+      ]
+    },
+    "prototype_sources_exist": {
+      "ok": true,
+      "detail": 0
+    },
+    "prototype_destinations_exist": {
+      "ok": true,
+      "detail": 0
+    },
+    "cross_page_navigate_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "reaction_sources_are_button_frames": {
+      "ok": true,
+      "detail": 0
+    },
+    "duplicate_reactions_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "self_navigate_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "prototype_hotspot_layers_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "text_image_icon_reactions_zero": {
+      "ok": true,
+      "detail": 0
+    },
+    "navigate_reset_flags": {
+      "ok": true,
+      "detail": 0
+    },
+    "header_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "footer_rules": {
+      "ok": true,
+      "detail": {
+        "links": 11,
+        "reactions": 11
+      }
+    },
+    "banner_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "chat_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "accordion_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "overlay_rules": {
+      "ok": true,
+      "detail": []
+    },
+    "frames_have_explicit_fills": {
+      "ok": true,
+      "detail": 0
+    },
+    "hover_components": {
+      "ok": true,
+      "detail": {
+        "sets": 0,
+        "instances": 0,
+        "failures": []
+      }
+    },
+    "react_modified_files_zero": {
+      "ok": true,
+      "detail": "(empty)"
+    }
+  },
+  "failures": [],
+  "notes": [
+    "Header 以 Instance 呈現；0 個畫面因 React 該頁 Header 與共用版尺寸不同而內嵌擷取：無"
+  ],
+  "textTotals": {
+    "domTextNodes": 2264,
+    "jsonTextNodes": 2134
+  },
+  "componentCounts": {
+    "hoverSets": 0,
+    "Header / Mobile": 8,
+    "Footer / Mobile": 1,
+    "Banner / Mobile": 6,
+    "Chat / Mobile": 2,
+    "FAQ Accordion / Mobile": 14,
+    "Survey FAQ Accordion / Mobile": 16,
+    "Survey Prompt / Overlay / Mobile": 1
+  },
+  "reactionCounts": {
+    "total": 1040,
+    "navigate": 713,
+    "changeTo": 325,
+    "overlay": 1,
+    "close": 1,
+    "buttonFramesWithReaction": 1027,
+    "timers": 7,
+    "hover": 0
+  },
+  "inlineHeaderFrames": [],
+  "hover": {
+    "sets": 0,
+    "instances": 0
+  },
+  "summary": {
+    "frames": 77,
+    "frameNodes": 6250,
+    "components": 10,
+    "reactions": 1040,
+    "inlineRegions": 0,
+    "heights": [
+      {
+        "frame": "Home / Mobile",
+        "react": 2366,
+        "figma": 2366,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn List / Mobile",
+        "react": 1294,
+        "figma": 1294,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn Detail / Mobile",
+        "react": 1559,
+        "figma": 1559,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem List / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem Detail / Mobile",
+        "react": 1626,
+        "figma": 1626,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / List / Mobile",
+        "react": 19876,
+        "figma": 19876,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail / Mobile",
+        "react": 1056,
+        "figma": 1056,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / Detail / Mobile",
+        "react": 1392,
+        "figma": 1392,
+        "diff": 0
+      },
+      {
+        "frame": "News / List / Mobile",
+        "react": 969,
+        "figma": 969,
+        "diff": 0
+      },
+      {
+        "frame": "News / Detail / Mobile",
+        "react": 1374,
+        "figma": 1374,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Login / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register / Mobile",
+        "react": 1203,
+        "figma": 1203,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Forgot Password / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Center / Mobile",
+        "react": 1375,
+        "figma": 1375,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Profile Edit / Mobile",
+        "react": 2203,
+        "figma": 2203,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Change Password / Mobile",
+        "react": 861,
+        "figma": 861,
+        "diff": 0
+      },
+      {
+        "frame": "Member / EasyCard Management / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Point Ledger / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Verify / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Point Exchange / Home / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 01 / Mobile",
+        "react": 1324,
+        "figma": 1324,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 02 / Mobile",
+        "react": 1039,
+        "figma": 1039,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 03 / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / CPC / Step 04 / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 01 / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 02 / Mobile",
+        "react": 976,
+        "figma": 976,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 03 / Mobile",
+        "react": 933,
+        "figma": 933,
+        "diff": 0
+      },
+      {
+        "frame": "V2 / Point Exchange / HamiPoint / Step 04 / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Survey / List / Mobile",
+        "react": 2064,
+        "figma": 2064,
+        "diff": 0
+      },
+      {
+        "frame": "Industry Survey / Mobile",
+        "react": 2675,
+        "figma": 2675,
+        "diff": 0
+      },
+      {
+        "frame": "App Download / Mobile",
+        "react": 3824,
+        "figma": 3824,
+        "diff": 0
+      },
+      {
+        "frame": "About UUPON / Mobile",
+        "react": 1950,
+        "figma": 1950,
+        "diff": 0
+      },
+      {
+        "frame": "Partnership / Mobile",
+        "react": 1143,
+        "figma": 1143,
+        "diff": 0
+      },
+      {
+        "frame": "Cautions / Mobile",
+        "react": 1264,
+        "figma": 1264,
+        "diff": 0
+      },
+      {
+        "frame": "FAQ / Mobile",
+        "react": 1017,
+        "figma": 1017,
+        "diff": 0
+      },
+      {
+        "frame": "Contact / Mobile",
+        "react": 1670,
+        "figma": 1670,
+        "diff": 0
+      },
+      {
+        "frame": "Newsletter / Mobile",
+        "react": 1956,
+        "figma": 1956,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant Rules / Mobile",
+        "react": 1616,
+        "figma": 1616,
+        "diff": 0
+      },
+      {
+        "frame": "Legal / Member / Mobile",
+        "react": 8038,
+        "figma": 8038,
+        "diff": 0
+      },
+      {
+        "frame": "Legal / Privacy / Mobile",
+        "react": 5662,
+        "figma": 5662,
+        "diff": 0
+      },
+      {
+        "frame": "Legal / Jointly / Mobile",
+        "react": 2598,
+        "figma": 2598,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn List (Main) / Mobile",
+        "react": 987,
+        "figma": 987,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Earn List (Tutorial) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem List (Main) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Activity / Redeem List (Tutorial) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 2) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 3) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 4) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Page 5) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 2) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 3) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 4) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Latest, Page 5) / Mobile",
+        "react": 1927,
+        "figma": 1927,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (Redeem) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (Merchant) / Mobile",
+        "react": 879,
+        "figma": 879,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (News) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Login (Password Shown) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register (Password Shown) / Mobile",
+        "react": 1203,
+        "figma": 1203,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register (Code Sent) / Mobile",
+        "react": 1203,
+        "figma": 1203,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Register (Errors) / Mobile",
+        "react": 1275,
+        "figma": 1275,
+        "diff": 0
+      },
+      {
+        "frame": "Auth / Forgot Password (Error) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Profile Edit (Saved) / Mobile",
+        "react": 2235,
+        "figma": 2235,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Profile Edit (Alert Closed) / Mobile",
+        "react": 2039,
+        "figma": 2039,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Change Password (Saved) / Mobile",
+        "react": 893,
+        "figma": 893,
+        "diff": 0
+      },
+      {
+        "frame": "Search / Result (App Banner Closed) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Merchant / List (Search Open) / Mobile",
+        "react": 2126,
+        "figma": 2126,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail (Intro) / Mobile",
+        "react": 1004,
+        "figma": 1004,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail (Notice) / Mobile",
+        "react": 1532,
+        "figma": 1532,
+        "diff": 0
+      },
+      {
+        "frame": "Mall / Detail (Collapsed) / Mobile",
+        "react": 1004,
+        "figma": 1004,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Point Ledger (Earn) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Member / Point Ledger (Redeem) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Point Exchange / Home (Logged In) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Point Exchange / Home (Transfer Out) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      },
+      {
+        "frame": "Point Exchange / Home (Logged In, Transfer Out) / Mobile",
+        "react": 844,
+        "figma": 844,
+        "diff": 0
+      }
+    ]
+  },
+  "figmaRuntimeChecks": "尚未執行：匯入 Figma 後請在 Plugin 按「④ 驗證」取得 Figma 內實際 Text/Hotspot/跨頁 NAVIGATE/重複 Reaction 計數。",
+  "passed": true
+}
